@@ -22,6 +22,8 @@ public class GridViewAdapter extends BaseAdapter {
     Bitmap black_cell;
     Bitmap mov_cell;
 
+    public boolean calculated = false;
+
     public boolean turn1 = true;
     public boolean turn2 = false;
 
@@ -59,11 +61,11 @@ public class GridViewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
 
         if(turn1){
-            player = "w";
+            player = "b";
         }
 
         if(turn2){
-            player = "b";
+            player = "w";
         }
 
         View view= thisInflater.inflate(R.layout.cell_layout, parent, false);
@@ -82,9 +84,13 @@ public class GridViewAdapter extends BaseAdapter {
             img.setImageBitmap(black_cell);
         }
 
-        board.setMov(player);
+        if(calculated==false) {
+            board.setMov(player);
 
-        mov = board.getList();
+            mov = board.getList();
+
+            calculated=true;
+        }
 
         Log.d("list", mov.toString());
 
@@ -99,22 +105,25 @@ public class GridViewAdapter extends BaseAdapter {
                     }
 
                     if (turn1) {
-                        img.setImageBitmap(white_cell);
+                        img.setImageBitmap(black_cell);
                         turn1 = false;
                         turn2 = true;
-                        board.setBoard(position, "w");
+                        board.setBoard(position, "b");
                         return;
                     }
 
                     if (turn2) {
-                        img.setImageBitmap(black_cell);
+                        img.setImageBitmap(white_cell);
                         turn1 = true;
                         turn2 = false;
-                        board.setBoard(position, "b");
+                        board.setBoard(position, "w");
                         return;
                     }
+                    board.formatList();
+                    calculated=false;
                 }
             //}
+
         });
 
         //board.formatList();

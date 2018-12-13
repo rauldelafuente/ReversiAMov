@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Board {
 
-    private String [] board;
+    private String []board;
 
     private List<Integer> mov = new ArrayList<>();
 
@@ -14,8 +14,8 @@ public class Board {
                 "", "", "", "", "", "", "", "",
                 "", "", "", "", "", "", "", "",
                 "", "", "", "", "", "", "", "",
-                "", "", "", "w", "b", "", "", "",
                 "", "", "", "b", "w", "", "", "",
+                "", "", "", "w", "b", "", "", "",
                 "", "", "", "", "", "", "", "",
                 "", "", "", "", "", "", "", "",
                 "", "", "", "", "", "", "", ""
@@ -78,16 +78,16 @@ public class Board {
 
     public void setMov(String player){
         for(int i = 0;  i < board.length; i++){
-            if(setMovUp(i, player)!=-1){
+            if(setMovUp(i, player)){
                 mov.add(i);
             }
-            if(setMovDown(i, player)!=-1){
+            if(setMovDown(i, player)){
                 mov.add(i);
             }
-            if(setMovLeft(i, player)!=-1){
+            if(setMovLeft(i, player)){
                 mov.add(i);
             }
-            if(setMovRigth(i, player)!=-1){
+            if(setMovRigth(i, player)){
                 mov.add(i);
             }
         }
@@ -110,60 +110,60 @@ public class Board {
      */
 
 
-    public int setMovDown(int pos, String player){
+    public boolean setMovDown(int pos, String player){
         if(pos+8>=64){
-            return -1;
+            return false;
         }
         if(getColor(pos+8).equals(getOponent(player))){
             setMovDown(pos+8, player);
         }
 
         if(getColor(pos+8).equals(player) && getColor(pos).equals(getOponent(player))){
-            return pos;
+            return true;
         }
-        return -1;
+        return false;
     }
 
-    public int setMovUp(int pos, String player){
+    public boolean setMovUp(int pos, String player){
         if(pos-8<0){
-            return -1;
+            return false;
         }
         if(getColor(pos-8).equals(getOponent(player))){
             setMovUp(pos-8, player);
         }
 
         if(getColor(pos-8).equals(player) && getColor(pos).equals(getOponent(player))){
-            return pos;
+            return true;
         }
-        return -1;
+        return false;
     }
 
-    public int setMovLeft(int pos, String player) {
+    public boolean setMovLeft(int pos, String player) {
         if(pos+8>=64){
-            return -1;
+            return false;
         }
         if(getColor(pos+1).equals(getOponent(player))){
             setMovLeft(pos+1, player);
         }
 
         if(getColor(pos+1).equals(player) && getColor(pos).equals(getOponent(player))){
-            return pos;
+            return true;
         }
-        return -1;
+        return false;
     }
 
-    public int setMovRigth(int pos, String player){
+    public boolean setMovRigth(int pos, String player){
         if(pos-1<0){
-            return -1;
+            return false;
         }
         if(getColor(pos-1).equals(getOponent(player))){
             setMovRigth(pos-1, player);
         }
 
         if(getColor(pos-1).equals(player) && getColor(pos).equals(getOponent(player))){
-            return pos;
+            return true;
         }
-        return -1;
+        return false;
     }
 
 }
