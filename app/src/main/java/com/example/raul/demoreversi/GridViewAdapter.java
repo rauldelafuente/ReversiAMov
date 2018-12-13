@@ -98,35 +98,38 @@ public class GridViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                //if (mov.contains(position)) {
+                if (mov.contains(position)) {
 
                     if (board.getColor(position).equals("w") || board.getColor(position).equals("b")) {
                         return;
-                    }
-
-                    if (turn1) {
+                    } else if (turn1) {
                         img.setImageBitmap(black_cell);
                         turn1 = false;
                         turn2 = true;
                         board.setBoard(position, "b");
-                        return;
-                    }
-
-                    if (turn2) {
+                    } else if (turn2) {
                         img.setImageBitmap(white_cell);
                         turn1 = true;
                         turn2 = false;
                         board.setBoard(position, "w");
-                        return;
                     }
+
                     board.formatList();
-                    calculated=false;
+                    calculated = false;
+                    changePlayer();
+                    if (calculated == false) {
+                        board.setMov(player);
+
+                        mov = board.getList();
+
+                        calculated = true;
+                    }
+                    Log.d("list", mov.toString());
                 }
-            //}
+            }
 
         });
 
-        //board.formatList();
         return view;
     }
 
@@ -136,6 +139,15 @@ public class GridViewAdapter extends BaseAdapter {
 
     public int getBlack(){
         return board.blackCount();
+    }
+
+    public void changePlayer(){
+        if(player=="w"){
+            player = "b";
+        }
+        else{
+            player = "w";
+        }
     }
 
 }

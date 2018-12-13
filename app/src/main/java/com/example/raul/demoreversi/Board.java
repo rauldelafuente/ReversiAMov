@@ -1,5 +1,7 @@
 package com.example.raul.demoreversi;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,16 +80,16 @@ public class Board {
 
     public void setMov(String player){
         for(int i = 0;  i < board.length; i++){
-            if(setMovUp(i, player)){
+            if(setMovUp(i, player) && board[i].equals("")){
                 mov.add(i);
             }
-            if(setMovDown(i, player)){
+            if(setMovDown(i, player)&& board[i].equals("")){
                 mov.add(i);
             }
-            if(setMovLeft(i, player)){
+            if(setMovLeft(i, player)&& board[i].equals("")){
                 mov.add(i);
             }
-            if(setMovRigth(i, player)){
+            if(setMovRigth(i, player)&& board[i].equals("")){
                 mov.add(i);
             }
         }
@@ -112,15 +114,19 @@ public class Board {
 
     public boolean setMovDown(int pos, String player){
         if(pos+8>=64){
+            //Log.d("Te pasaste bajando", ""+pos);
             return false;
         }
         if(getColor(pos+8).equals(getOponent(player))){
-            setMovDown(pos+8, player);
+            //Log.d("Recursivity", ""+pos);
+            return setMovDown(pos+8, player);
         }
 
         if(getColor(pos+8).equals(player) && getColor(pos).equals(getOponent(player))){
+            //Log.d("True", ""+pos);
             return true;
         }
+        //Log.d("False", ""+pos);
         return false;
     }
 
@@ -129,7 +135,7 @@ public class Board {
             return false;
         }
         if(getColor(pos-8).equals(getOponent(player))){
-            setMovUp(pos-8, player);
+            return setMovUp(pos-8, player);
         }
 
         if(getColor(pos-8).equals(player) && getColor(pos).equals(getOponent(player))){
@@ -143,7 +149,7 @@ public class Board {
             return false;
         }
         if(getColor(pos+1).equals(getOponent(player))){
-            setMovLeft(pos+1, player);
+            return setMovLeft(pos+1, player);
         }
 
         if(getColor(pos+1).equals(player) && getColor(pos).equals(getOponent(player))){
@@ -157,7 +163,7 @@ public class Board {
             return false;
         }
         if(getColor(pos-1).equals(getOponent(player))){
-            setMovRigth(pos-1, player);
+            return setMovRigth(pos-1, player);
         }
 
         if(getColor(pos-1).equals(player) && getColor(pos).equals(getOponent(player))){
