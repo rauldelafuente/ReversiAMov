@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
         Button btnLocal = findViewById(R.id.btn2);
         Button btnConn = findViewById(R.id.btn3);
 
+
         btnCpu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
