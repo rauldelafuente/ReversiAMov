@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,11 +86,13 @@ public class GridViewAdapter extends BaseAdapter {
 
         mov = board.getList();
 
+        Log.d("list", mov.toString());
+
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (mov.contains(position)) {
+                //if (mov.contains(position)) {
 
                     if (board.getColor(position).equals("w") || board.getColor(position).equals("b")) {
                         return;
@@ -111,7 +114,7 @@ public class GridViewAdapter extends BaseAdapter {
                         return;
                     }
                 }
-            }
+            //}
         });
 
         //board.formatList();
