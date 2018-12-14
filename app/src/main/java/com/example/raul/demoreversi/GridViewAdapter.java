@@ -35,6 +35,7 @@ public class GridViewAdapter extends BaseAdapter {
     String player;
 
     public List<Integer>mov = new ArrayList<>();
+    public List<Integer>col = new ArrayList<>();
 
     public GridViewAdapter(Context mContext, Board board){
         this.mContext=mContext;
@@ -87,7 +88,7 @@ public class GridViewAdapter extends BaseAdapter {
         if(calculated==false) {
             board.setMov(player);
 
-            mov = board.getList();
+            mov = board.getMovList();
 
             calculated=true;
         }
@@ -107,20 +108,25 @@ public class GridViewAdapter extends BaseAdapter {
                         turn1 = false;
                         turn2 = true;
                         board.setBoard(position, "b");
+                        //col = board.getColList(position, player, col);
+                        //Log.d("list2", col.toString());
+
                     } else if (turn2) {
                         img.setImageBitmap(white_cell);
                         turn1 = true;
                         turn2 = false;
                         board.setBoard(position, "w");
+                        //col = board.getColList(position, player, col);
+                        //Log.d("list2", col.toString());
                     }
-
-                    board.formatList();
+                    col = new ArrayList<>();
+                    board.formatMovList();
                     calculated = false;
                     changePlayer();
                     if (calculated == false) {
                         board.setMov(player);
 
-                        mov = board.getList();
+                        mov = board.getMovList();
 
                         calculated = true;
                     }

@@ -52,7 +52,11 @@
                 android:id="@+id/blackResult"/>
 
         </LinearLayout>
-
+<FrameLayout
+    android:id="@+id/board"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <GridView
             android:id="@+id/localBoard"
             android:numColumns="8"
@@ -61,6 +65,8 @@
             android:verticalSpacing="0dp">
 
         </GridView>
+
+</FrameLayout>
 
     </LinearLayout>
 
