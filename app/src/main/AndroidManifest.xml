@@ -20,6 +20,7 @@
         <activity android:name=".VsLocal">
 
         </activity>
+        <activity android:name=".VsCPU" />
     </application>
 
 

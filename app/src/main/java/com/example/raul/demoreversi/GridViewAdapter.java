@@ -27,6 +27,8 @@ public class GridViewAdapter extends BaseAdapter {
     public boolean turn1 = true;
     public boolean turn2 = false;
 
+    public boolean CPUplay = false;
+
     private Context mContext;
     private LayoutInflater thisInflater;
 
@@ -39,10 +41,11 @@ public class GridViewAdapter extends BaseAdapter {
     public List<Integer>mov = new ArrayList<>();
     public List<Integer>col = new ArrayList<>();
 
-    public GridViewAdapter(Context mContext, Board board){
+    public GridViewAdapter(Context mContext, Board board, boolean CPUplay){
         this.mContext=mContext;
         this.thisInflater = LayoutInflater.from(mContext);
         this.board = board;
+        this.CPUplay=CPUplay;
     }
 
     @Override
@@ -107,9 +110,9 @@ public class GridViewAdapter extends BaseAdapter {
                         rePlay=false;
                         col = board.getColList(position, player, col);
                         Log.d("list2", col.toString());
-                        /*for (int i = 0; i<col.size(); i++){
+                        for (int i = 0; i<col.size(); i++){
                             board.setBoard(col.get(i), "b");
-                        }*/
+                        }
 
                     } else if (turn2) {
                         img.setImageBitmap(white_cell);
@@ -121,9 +124,9 @@ public class GridViewAdapter extends BaseAdapter {
                         rePlay=false;
                         col = board.getColList(position, player, col);
                         Log.d("list2", col.toString());
-                        /*for (int i = 0; i<col.size(); i++){
+                        for (int i = 0; i<col.size(); i++){
                             board.setBoard(col.get(i), "w");
-                        }*/
+                        }
                     }
                     col = new ArrayList<>();
                     board.formatMovList();
@@ -198,6 +201,7 @@ public class GridViewAdapter extends BaseAdapter {
             mov = board.getMovList();
         }
     }
+
 
     public void setRePlay(){
         rePlay = true;

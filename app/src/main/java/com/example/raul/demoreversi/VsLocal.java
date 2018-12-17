@@ -33,10 +33,9 @@ public class VsLocal extends Activity {
         btnskp2 = findViewById(R.id.btnskp2);
         btnnp2 = findViewById(R.id.btnnp2);
 
-        grid = new GridViewAdapter(this, board);
+        grid = new GridViewAdapter(this, board, false);
         gv = findViewById(R.id.localBoard);
 
-        //grid.notifyDataSetChanged();
         gv.setAdapter(grid);
 
         tvW.setText("" + grid.getWhite());
