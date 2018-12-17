@@ -109,7 +109,7 @@ public class Board {
     }
 
 
-    /*
+
     public List<Integer> getColList(int pos, String player, List<Integer>list) {
 
         setColorsUp(pos, player, list);
@@ -123,7 +123,7 @@ public class Board {
 
         return list;
     }
-    */
+
 
 
     public List<Integer> getMovList(){
@@ -148,10 +148,13 @@ public class Board {
 
 
     public boolean setMovDown(int pos, String player){
+        Log.d("CREATINGlist", "Estamos en: "+(pos));
         if(pos+8>=64){
             return false;
         }
         if(getColor(pos+8).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos+8));
+            Log.d("CREATINGlist", "Y da: "+setMovDown(pos+8, player));
             return setMovDown(pos+8, player);
         }
 
@@ -166,6 +169,8 @@ public class Board {
             return false;
         }
         if(getColor(pos-8).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos-8));
+            Log.d("CREATINGlist", "Y da: "+setMovUp(pos-8, player));
             return setMovUp(pos-8, player);
         }
 
@@ -176,14 +181,17 @@ public class Board {
     }
 
     public boolean setMovLeft(int pos, String player) {
-        if(pos+8>=64){
+        if(pos+1>=64){
             return false;
         }
         if(getColor(pos+1).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos+1));
+            Log.d("CREATINGlist", "Y da: "+setMovLeft(pos+1, player));
             return setMovLeft(pos+1, player);
         }
 
         if(getColor(pos+1).equals(player) && getColor(pos).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Acepeta: "+(pos+1));
             return true;
         }
         return false;
@@ -194,6 +202,8 @@ public class Board {
             return false;
         }
         if(getColor(pos-1).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos-1));
+            Log.d("CREATINGlist", "Y da: "+setMovRigth(pos-1, player));
             return setMovRigth(pos-1, player);
         }
 
@@ -208,6 +218,8 @@ public class Board {
             return false;
         }
         if(getColor(pos-7).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos-7));
+            Log.d("CREATINGlist", "Y da: "+setMovRigthUp(pos-7, player));
             return setMovRigthUp(pos-7, player);
         }
 
@@ -222,6 +234,8 @@ public class Board {
             return false;
         }
         if(getColor(pos+9).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos+9));
+            Log.d("CREATINGlist", "Y da: "+setMovRigthDown(pos+9, player));
             return setMovRigthDown(pos+9, player);
         }
 
@@ -236,6 +250,8 @@ public class Board {
             return false;
         }
         if(getColor(pos-9).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos-9));
+            Log.d("CREATINGlist", "Y da: "+setMovLeftUp(pos-9, player));
             return setMovLeftUp(pos-9, player);
         }
 
@@ -250,6 +266,8 @@ public class Board {
             return false;
         }
         if(getColor(pos+7).equals(getOponent(player))){
+            Log.d("CREATINGlist", "Se Espera: "+(pos+7));
+            Log.d("CREATINGlist", "Y da: "+setMovLeftDown(pos+7, player));
             return setMovLeftDown(pos+7, player);
         }
 
@@ -264,22 +282,19 @@ public class Board {
     *
     * Change Colors when move
     *
-
+    */
 
     public boolean setColorsDown(int pos, String player, List<Integer> list){
         if(pos+8>=64){
             return false;
         }
         if(getColor(pos+8).equals(getOponent(player))){
-            Log.d("CREATINGlist2", "Se Espera: "+(pos+8));
             if(setColorsDown(pos+8, player, list)){
-                Log.d("CREATINGlist2", "Se mete: "+(pos+8));
                 list.add(pos+8);
             }
         }
 
         if(getColor(pos+8).equals(player) && getColor(pos).equals(getOponent(player))){
-            Log.d("CREATINGlist2", "Se Acepeta: "+(pos+8));
             return true;
         }
         return false;
@@ -396,6 +411,5 @@ public class Board {
         }
         return false;
     }
-    */
 
 }

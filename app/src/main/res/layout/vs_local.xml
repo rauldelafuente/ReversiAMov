@@ -56,7 +56,7 @@
     android:id="@+id/board"
     android:layout_gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
         <GridView
             android:id="@+id/localBoard"
             android:numColumns="8"
@@ -68,6 +68,55 @@
 
 </FrameLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Player 1 cards:"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Skip turn"
+                android:id="@+id/btnskp"
+                android:onClick="skipTurn"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Play again"
+                android:id="@+id/btnnp"
+                android:onClick="rePlay"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Player 2 cards:"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Skip turn"
+                android:id="@+id/btnskp2"
+                android:onClick="skipTurn2"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Play again"
+                android:id="@+id/btnnp2"
+                android:onClick="rePlay2"/>
+        </LinearLayout>
     </LinearLayout>
 
 
