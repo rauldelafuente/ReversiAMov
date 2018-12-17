@@ -1,6 +1,9 @@
 package com.example.raul.demoreversi;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +26,19 @@ public class MainActivity extends Activity {
         btnCpu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this).setTitle("Choose your side")
+                        .setPositiveButton("Server", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MainActivity.this, "Server", Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setNegativeButton("Client", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(MainActivity.this, "Client", Toast.LENGTH_LONG).show();
+                            }
+                        }).show();
                 Toast.makeText(MainActivity.this, "COMMING SOON!", Toast.LENGTH_LONG).show();
             }
         });
