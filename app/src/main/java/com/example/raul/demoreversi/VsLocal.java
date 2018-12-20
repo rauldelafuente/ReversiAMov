@@ -30,6 +30,7 @@ public class VsLocal extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vs_local);
 
+        //Get all hte views from the layout
         tvW = findViewById(R.id.whiteResult);
         tvB = findViewById(R.id.blackResult);
 
@@ -38,22 +39,31 @@ public class VsLocal extends Activity {
         btnskp2 = findViewById(R.id.btnskp2);
         btnnp2 = findViewById(R.id.btnnp2);
 
+        //initialize adapter and the grid view
         grid = new GridViewAdapter(this, board);
         gv = findViewById(R.id.localBoard);
 
+        //Set the movements of the first movement
         board.setMov(player);
 
+        //set adapter
         gv.setAdapter(grid);
+
+        //When you click the grid view
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //do the move to that postion
                 board.move (position);
+                //Notify to the adapter that something changed
                 grid.notifyDataSetChanged();
+                //set the scoreboard of the activity
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
             }
         });
 
+        //Set the first scoreboard
         tvW.setText("" + board.whiteCount());
         tvB.setText("" + board.blackCount());
 
@@ -82,6 +92,8 @@ public class VsLocal extends Activity {
         return super.onMenuItemSelected(featureId, item);
     }
 
+
+    //Buttons methods. Those methods are referenced to the board ones
     public void skipTurn(View v){
         board.skipTurn(v);
     }

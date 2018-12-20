@@ -23,6 +23,7 @@ public class Board {
 
     boolean usedsk1 = false, usednp1 = false, usedsk2 = false, usednp2 = false;
 
+    //Create the board logic, this is to say to the system where are the white, black or empty cells
     public Board() {
         this.board = new String[]{
                 "", "", "", "", "", "", "", "",
@@ -40,14 +41,17 @@ public class Board {
         return board;
     }
 
+    //To change the cell color
     public void setBoard(int pos, String color) {
         board[pos] = color;
     }
 
+    //Get the color of a psotion to see who is there
     public String getColor(int pos) {
         return board[pos];
     }
 
+    //Count white cells to cahnge the scoreboard
     public int whiteCount() {
         int count = 0;
         for (int i = 0; i < board.length; i++) {
@@ -58,6 +62,7 @@ public class Board {
         return count;
     }
 
+    //Count black cells to cahnge the scoreboard
     public int blackCount() {
         int count = 0;
         for (int i = 0; i < board.length; i++) {
@@ -72,15 +77,7 @@ public class Board {
         return 64;
     }
 
-    public boolean isInList(int pos) {
-        for (int i = 0; i < mov.size(); i++) {
-            if (pos == mov.get(i)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    //check who is the opponent, this is used to play, so we gan use the same algorithm to both colors
     public String getOponent(String player) {
         if (player.equals("w")) {
             return "b";
@@ -89,6 +86,10 @@ public class Board {
         }
     }
 
+    /*
+    Set the possible movements
+    What we do is chech the empty cells, and there we see up, down, left... to see if there is a possible movement in that empty cell
+     */
     public void setMov(String player) {
         for (int i = 0; i < board.length; i++) {
             if (setMovUp(i, player) && board[i].equals("")) {
@@ -119,6 +120,12 @@ public class Board {
     }
 
 
+    /*
+    Change the colors after a movement
+    After a movement we have to check the cells that has to change the color
+    So we enter the current position, the player who has move and the list in which we want to store the cells that change color
+     */
+
     public List<Integer> getColList(int pos, String player, List<Integer> list) {
 
         setColorsUp(pos, player, list);
@@ -134,14 +141,17 @@ public class Board {
     }
 
 
+    //Get the list of movements
     public List<Integer> getMovList() {
         return mov;
     }
 
+    //Format the list of movemetns
     public void formatMovList() {
         mov = new ArrayList<>();
     }
 
+    //Format the list of change colors
     public void fromatColList() {
         col = new ArrayList<>();
     }
@@ -151,19 +161,22 @@ public class Board {
      *
      * MOVEMENTS
      *
-     *
+     *The same almortithm is used in all the directions (Only explined first one for that reason)
      */
 
 
     public boolean setMovDown(int pos, String player) {
+        //If the next postion is out the board, false
         if (pos + 8 >= 64) {
             return false;
         }
         if (getColor(pos + 8).equals(getOponent(player))) {
+            //If the next position is an opponent cell, continue
            return setMovDown(pos + 8, player);
         }
 
         if (getColor(pos + 8).equals(player) && getColor(pos).equals(getOponent(player))) {
+            //If the next position is your color and the current postion is a opponent one, true
             return true;
         }
         return false;
@@ -272,23 +285,25 @@ public class Board {
      *
      * Change Colors when move
      *
+     * The same as before, all of that follows the same logic, only first one
      */
 
     public boolean setColorsDown(int pos, String player, List<Integer> list) {
-        //Log.d("CRETEING:list2", "Eentramos en: "+(pos));
+        //If the next position is out of bounds, false
         if (pos + 8 >= 64) {
             return false;
         }
         if (getColor(pos + 8).equals(getOponent(player))) {
-            //Log.d("CRETEING:list2", "Esperamos en: "+(pos+8));
+            //If the next position is an opponent one, continue
             if (setColorsDown(pos + 8, player, list)) {
-                //Log.d("CRETEING:list2", "Metemos: "+(pos+8));
+                // if the previous is true, add to the list to change color and return true
                 list.add(pos + 8);
                 return true;
             }
         }
 
         if (getColor(pos + 8).equals(player) && getColor(pos).equals(getOponent(player))) {
+            //If the next position is yours and you are in a opponent one, true
             return true;
         }
         return false;
@@ -329,14 +344,11 @@ public class Board {
     }
 
     public boolean setColorsRigth(int pos, String player, List<Integer> list) {
-        Log.d("CREATING: list2", "Entrando en: "+(pos));
         if ((pos + 1 >= 64)|| (pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)) {
             return false;
         }
         if (getColor(pos + 1).equals(getOponent(player))) {
-            Log.d("CREATING: list2", "Esperando en: "+(pos+1));
             if (setColorsRigth(pos + 1, player, list)) {
-                Log.d("CREATING: list2", "Se mete: "+(pos+1));
                 list.add(pos + 1);
                 return true;
             }
@@ -416,50 +428,72 @@ public class Board {
         return false;
     }
 
-    public void move(int position) {
-        if (mov.contains(position)) {
 
+
+    //Move logic
+
+    public void move(int position) {
+        //If the position is in possible movements, continue
+        if (mov.contains(position)) {
+            //If the position already has a color, return
             if (getColor(position).equals("w") || getColor(position).equals("b")) {
                 return;
-            } else if (turn1) {
+            }
+            //If it is turn 1 (black), set the position to black
+            else if (turn1) {
                 setBoard(position, "b");
+                //Change turn, before check if the replay button has been clicked
                 if (!rePlay) {
                     turn1 = false;
                     turn2 = true;
                 }
-                rePlay = false;
+                //Create the change color list
                 col = getColList(position, player, col);
                 Log.d("list2", col.toString());
+                //Loop for change the color of all the position inside the list
                 for (int i = 0; i < col.size(); i++) {
                     setBoard(col.get(i), "b");
                 }
-
-            } else if (turn2) {
+                //The same as before but with white cells
+                } else if (turn2) {
                 setBoard(position, "w");
                 if (!rePlay) {
                     turn1 = true;
                     turn2 = false;
                 }
-                rePlay = false;
                 col = getColList(position, player, col);
                 Log.d("list2", col.toString());
                 for (int i = 0; i < col.size(); i++) {
                     setBoard(col.get(i), "w");
                 }
             }
-            col = new ArrayList<>();
-            changePlayer();
+            //Format the color list to re calculate in the next turn
+            fromatColList();
+            //Change the current player to the other one in case the replay button has not been clicked
+            if(!rePlay) {
+                changePlayer();
+            }
+            //in case it was clicked, now is false
+            rePlay = false;
+            //Format the possible moviments list to re calculate later
             formatMovList();
+            //Calculate the mossible movements of the current player
             setMov(player);
+            //add one to the counter to coun the movements (The buttons can be only clicked after count == 10)
             counter++;
             Log.d("list", mov.toString());
         }
     }
 
+    //Logic of the buttons (player cards)
     public boolean skipTurn(View v) {
+        //Check if the minimum turn has been done
         if (counter > 10) {
+            //Check who is playing (player 1 or 2)
             if (getTurnOne()) {
+                //If the button has not been clicked, continue
                 if (!usedsk1) {
+                    //Put that the button has been clicked and set the new turn
                     usedsk1 = true;
                     setTurn(2);
                     return true;
@@ -469,6 +503,7 @@ public class Board {
         return false;
     }
 
+    //The same as before but to the other player
     public boolean skipTurn2(View v) {
         if (counter > 10) {
             if (!getTurnOne()) {
@@ -482,6 +517,7 @@ public class Board {
         return false;
     }
 
+    //The same as before but with the replay button
     public boolean rePlay(View v) {
         if (counter > 10) {
             if (getTurnOne()) {
@@ -508,6 +544,7 @@ public class Board {
         return false;
     }
 
+    //Change the turn
     public void changePlayer() {
         if (player == "w") {
             player = "b";
@@ -516,6 +553,7 @@ public class Board {
         }
     }
 
+    //Get the current player turn
     public boolean getTurnOne() {
         if (turn1) {
             return true;
@@ -523,6 +561,7 @@ public class Board {
         return false;
     }
 
+    //Set the turn to the other player, changing all the moviment lists and everyting
     public void setTurn(int player) {
         if (player == 1) {
             turn1 = true;
@@ -542,10 +581,12 @@ public class Board {
     }
 
 
+    //Replay = true
     public void setRePlay() {
         rePlay = true;
     }
 
+    //For when we develop the cpu play
     public void setCPUplay(boolean b) {
         if (b) {
             CPUplay = true;

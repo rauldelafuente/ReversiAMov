@@ -14,13 +14,13 @@ public class GridViewAdapter extends BaseAdapter {
     Bitmap empty_cell;
     Bitmap white_cell;
     Bitmap black_cell;
-    Bitmap mov_cell;
 
     private Context mContext;
     private LayoutInflater thisInflater;
 
     private Board board;
 
+    //Constructor
     public GridViewAdapter(Context mContext, Board board){
         this.mContext=mContext;
         this.thisInflater = LayoutInflater.from(mContext);
@@ -42,6 +42,7 @@ public class GridViewAdapter extends BaseAdapter {
         return position;
     }
 
+    //To change the view of the grid, look in the board the names and change the view depending of it its w, b or empty
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
@@ -50,7 +51,6 @@ public class GridViewAdapter extends BaseAdapter {
         empty_cell = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.green_square);
         white_cell = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.white_board);
         black_cell = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.black_board);
-        //mov_cell = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.grey_square);
 
         img.setImageBitmap(empty_cell);
 
@@ -64,6 +64,7 @@ public class GridViewAdapter extends BaseAdapter {
         return view;
     }
 
+    //For notify a change and that everything has to be recalculated
     @Override
     public void notifyDataSetChanged() {
         super.notifyDataSetChanged();
