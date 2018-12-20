@@ -52,7 +52,7 @@
                 android:id="@+id/blackResult"/>
 
         </LinearLayout>
-<FrameLayout
+    <FrameLayout
     android:id="@+id/board"
     android:layout_gravity="center"
     android:layout_width="match_parent"

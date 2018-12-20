@@ -4,10 +4,16 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VsLocal extends Activity {
 
@@ -16,9 +22,8 @@ public class VsLocal extends Activity {
     TextView tvW;
     TextView tvB;
     Board board = new Board();
-    boolean usedsk1=false, usednp1=false, usedsk2=false, usednp2=false;
     Button btnskp, btnnp, btnskp2, btnnp2;
-
+    String player = "b";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +38,24 @@ public class VsLocal extends Activity {
         btnskp2 = findViewById(R.id.btnskp2);
         btnnp2 = findViewById(R.id.btnnp2);
 
-        grid = new GridViewAdapter(this, board, false);
+        grid = new GridViewAdapter(this, board);
         gv = findViewById(R.id.localBoard);
 
-        gv.setAdapter(grid);
+        board.setMov(player);
 
-        tvW.setText("" + grid.getWhite());
-        tvB.setText("" + grid.getBlack());
+        gv.setAdapter(grid);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                board.move (position);
+                grid.notifyDataSetChanged();
+                tvW.setText("" + board.whiteCount());
+                tvB.setText("" + board.blackCount());
+            }
+        });
+
+        tvW.setText("" + board.whiteCount());
+        tvB.setText("" + board.blackCount());
 
         /*
         <ImageView
@@ -56,50 +72,30 @@ public class VsLocal extends Activity {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-    public void skipTurn(View v) {
-        if(grid.getCounter()>10) {
-            if (grid.getTurnOne()) {
-                if (!usedsk1) {
-                    btnskp.setBackgroundColor(Color.GREEN);
-                    usedsk1 = true;
-                    grid.setTurn(2);
-                }
-            }
-        }
-    }
-    public void skipTurn2(View v) {
-        if(grid.getCounter()>10) {
-            if (!grid.getTurnOne()) {
-                if (!usedsk2) {
-                    btnskp2.setBackgroundColor(Color.GREEN);
-                    usedsk2 = true;
-                    grid.setTurn(1);
-                }
-            }
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 
-    public void rePlay(View v) {
-        if(grid.getCounter()>10) {
-            if (grid.getTurnOne()) {
-                if (!usednp1) {
-                    btnnp.setBackgroundColor(Color.GREEN);
-                    usednp1 = true;
-                    grid.setRePlay();
-                }
-            }
-        }
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        return super.onMenuItemSelected(featureId, item);
     }
-    public void rePlay2(View v) {
-        if(grid.getCounter()>10) {
-            if (!grid.getTurnOne()) {
-                if(!usednp2) {
-                    btnnp2.setBackgroundColor(Color.GREEN);
-                    usednp2 = true;
-                    grid.setRePlay();
-                }
-            }
-        }
+
+    public void skipTurn(View v){
+        board.skipTurn(v);
+    }
+
+    public void skipTurn2(View v){
+        board.skipTurn2(v);
+    }
+
+    public void rePlay(View v){
+        board.rePlay(v);
+    }
+
+    public void rePlay2(View v){
+        board.rePlay2(v);
     }
 
 }
