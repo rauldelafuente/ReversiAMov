@@ -106,16 +106,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Skip turn"
-                android:id="@+id/btnskp2"
-                android:onClick="skipTurn2"/>
+                android:id="@+id/btnskp2"/>
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Play again"
-                android:id="@+id/btnnp2"
-                android:onClick="rePlay2"/>
+                android:id="@+id/btnnp2"/>
         </LinearLayout>
     </LinearLayout>
 

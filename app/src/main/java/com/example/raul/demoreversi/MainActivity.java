@@ -26,8 +26,8 @@ public class MainActivity extends Activity {
         btnCpu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,VsCPU.class);
-                startActivity(intent);
+                //Intent intent = new Intent(MainActivity.this,VsCPU.class);
+                //startActivity(intent);
             }
         });
 
@@ -46,13 +46,17 @@ public class MainActivity extends Activity {
                         .setPositiveButton("Server", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(MainActivity.this, "Server", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(MainActivity.this, VsOnline.class);
+                                intent.putExtra("mode", VsOnline.SERVER);
+                                startActivity(intent);
                             }
                         })
                         .setNegativeButton("Client", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(MainActivity.this, "Client", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(MainActivity.this, VsOnline.class);
+                                intent.putExtra("mode", VsOnline.CLIENT);
+                                startActivity(intent);
                             }
                         }).show();
             }

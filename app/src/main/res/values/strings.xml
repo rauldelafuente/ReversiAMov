@@ -3,4 +3,5 @@
     <string name="error_netconn">No network connection</string>
     <string name="server_wait_opponent_msg">Waiting for your opponent</string>
     <string name="serverdlg_title">Server Reversi</string>
+    <string name="game_finished">The game was finished</string>
 </resources>
