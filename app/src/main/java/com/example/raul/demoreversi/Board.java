@@ -41,12 +41,24 @@ public class Board {
         return board;
     }
 
+    public String getBoardAsString(){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < board.length; i ++){
+            sb.append(board[i]);
+        }
+        return sb.toString();
+    }
+
     //To change the cell color
     public void setBoard(int pos, String color) {
         board[pos] = color;
     }
 
-    //Get the color of a psotion to see who is there
+    public void setBoardFromString(String board){
+        this.board = board.split("#");
+    }
+
+    //Get the color of a position to see who is there
     public String getColor(int pos) {
         return board[pos];
     }
