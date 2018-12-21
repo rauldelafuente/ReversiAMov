@@ -196,12 +196,15 @@ public class Board {
         return false;
     }
 
-    public boolean setMovLeft(int pos, String player) {
+    public boolean setMovRigth(int pos, String player) {
         if (pos + 1 >= 64) {
             return false;
         }
         if (getColor(pos + 1).equals(getOponent(player))) {
-            return setMovLeft(pos + 1, player);
+            if((pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)){
+                return false;
+            }
+            return setMovRigth(pos + 1, player);
         }
 
         if (getColor(pos + 1).equals(player) && getColor(pos).equals(getOponent(player))) {
@@ -210,12 +213,15 @@ public class Board {
         return false;
     }
 
-    public boolean setMovRigth(int pos, String player) {
+    public boolean setMovLeft(int pos, String player) {
         if (pos - 1 < 0) {
             return false;
         }
         if (getColor(pos - 1).equals(getOponent(player))) {
-            return setMovRigth(pos - 1, player);
+            if((pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)){
+                return false;
+            }
+            return setMovLeft(pos - 1, player);
         }
 
         if (getColor(pos - 1).equals(player) && getColor(pos).equals(getOponent(player))) {
@@ -229,6 +235,9 @@ public class Board {
             return false;
         }
         if (getColor(pos - 7).equals(getOponent(player))) {
+            if((pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)){
+                return false;
+            }
             return setMovRigthUp(pos - 7, player);
         }
 
@@ -243,6 +252,9 @@ public class Board {
             return false;
         }
         if (getColor(pos + 9).equals(getOponent(player))) {
+            if((pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)){
+                return false;
+            }
             return setMovRigthDown(pos + 9, player);
         }
 
@@ -257,6 +269,9 @@ public class Board {
             return false;
         }
         if (getColor(pos - 9).equals(getOponent(player))) {
+            if((pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)){
+                return false;
+            }
             return setMovLeftUp(pos - 9, player);
         }
 
@@ -271,6 +286,9 @@ public class Board {
             return false;
         }
         if (getColor(pos + 7).equals(getOponent(player))) {
+            if((pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)){
+                return false;
+            }
             return setMovLeftDown(pos + 7, player);
         }
 
@@ -443,7 +461,7 @@ public class Board {
             else if (turn1) {
                 setBoard(position, "b");
                 //Change turn, before check if the replay button has been clicked
-                if (!rePlay) {
+                if (!rePlay || !CPUplay) {
                     turn1 = false;
                     turn2 = true;
                 }
@@ -483,6 +501,22 @@ public class Board {
             counter++;
             Log.d("list", mov.toString());
         }
+    }
+
+
+    public void CPUMov(){
+        int index = (int)(Math.random() * (mov.size() + 1));
+        int pos = mov.get(index);
+        setBoard(pos, "w");
+        col = getColList(pos, player, col);
+        Log.d("list2", col.toString());
+        for (int i = 0; i < col.size(); i++) {
+            setBoard(col.get(i), "w");
+        }
+        changePlayer();
+        formatMovList();
+        setMov(player);
+        counter++;
     }
 
     //Logic of the buttons (player cards)
