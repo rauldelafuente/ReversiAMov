@@ -25,6 +25,12 @@
         <activity android:name=".VsOnline">
         </activity>
         <activity android:name=".VsCPU" />
+        <activity android:name=".ProfileActivity">
+        </activity>
+        <activity android:name=".HelpActivity">
+        </activity>
+        <activity android:name=".CreditsActivity">
+        </activity>
     </application>
 
 

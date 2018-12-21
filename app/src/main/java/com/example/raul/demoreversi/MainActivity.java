@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -61,6 +64,35 @@ public class MainActivity extends Activity {
                         }).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater mi = getMenuInflater();
+        mi.inflate(R.menu.mainmenu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.profile:
+                Toast.makeText(this, "Profile", Toast.LENGTH_LONG).show();
+                Intent intentProfile = new Intent(this, ProfileActivity.class);
+                startActivity(intentProfile);
+                return true;
+            case R.id.help:
+                Toast.makeText(this, "Help", Toast.LENGTH_LONG).show();
+                Intent intentHelp = new Intent(this, HelpActivity.class);
+                startActivity(intentHelp);
+                return true;
+            case R.id.credits:
+                Toast.makeText(this, "Credits", Toast.LENGTH_LONG).show();
+                Intent intentCredits = new Intent(this, CreditsActivity.class);
+                startActivity(intentCredits);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
