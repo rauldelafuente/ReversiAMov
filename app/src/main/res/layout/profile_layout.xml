@@ -12,8 +12,9 @@
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/user_pic"
+        android:background="@android:color/background_light"
         android:contentDescription="Player pic"
+        android:src="@drawable/user_pic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
