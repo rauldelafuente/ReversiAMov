@@ -1,6 +1,7 @@
 package com.example.raul.demoreversi;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -60,6 +61,10 @@ public class VsLocal extends Activity {
                 //set the scoreboard of the activity
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
+
+                if(board.isFinish()){
+                    finished();
+                }
             }
         });
 
@@ -72,6 +77,25 @@ public class VsLocal extends Activity {
         (...)
         android:adjustViewBounds="true" />
          */
+    }
+
+    public void goBack(){
+        finishActivity(0);
+    }
+
+    public void finished(){
+        String winner;
+        if(board.whiteCount()>board.blackCount()){
+            winner = "White";
+        }
+        else{
+            winner = "Black";
+        }
+        AlertDialog d = new AlertDialog.Builder(this)
+                .setTitle(R.string.game_finished)
+                .setMessage(R.string.winner + winner)
+                .create();
+        d.show();
     }
 
     protected void onSaveInstanceState(Bundle outState) {

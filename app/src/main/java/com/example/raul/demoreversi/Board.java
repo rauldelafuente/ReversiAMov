@@ -20,6 +20,7 @@ public class Board {
     String player = "b";
     public int counter = 1;
     public boolean CPUplay = false;
+    public boolean finish = false;
 
     boolean usedsk1 = false, usednp1 = false, usedsk2 = false, usednp2 = false;
 
@@ -505,19 +506,43 @@ public class Board {
             }
             //in case it was clicked, now is false
             rePlay = false;
-            //Format the possible moviments list to re calculate later
+            //Format the possible movements list to re calculate later
             formatMovList();
-            //Calculate the mossible movements of the current player
+            //Calculate the possible movements of the current player
             setMov(player);
             //add one to the counter to coun the movements (The buttons can be only clicked after count == 10)
             counter++;
+
+            if(mov.isEmpty()){
+                changePlayer();
+                if(turn1){
+                    turn1=false;
+                    turn2=true;
+                }
+                else{
+                    turn2=false;
+                    turn1=true;
+                }
+                formatMovList();
+                setMov(player);
+                if(mov.isEmpty()){
+                    finish=true;
+                }
+            }
+
             Log.d("list", mov.toString());
         }
     }
 
+    public boolean isFinish(){
+        if(finish){
+            return true;
+        }
+        return false;
+    }
 
     public void CPUMov(){
-        int index = (int)(Math.random() * (mov.size() + 1));
+        int index = (int)(Math.random() * mov.size());
         int pos = mov.get(index);
         setBoard(pos, "w");
         col = getColList(pos, player, col);

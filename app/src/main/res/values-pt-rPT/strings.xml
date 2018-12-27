@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DemoReversi</string>
+    <string name="error_netconn">não conexão de rede</string>
+    <string name="server_wait_opponent_msg">Esperando pelo seu adversário</string>
+    <string name="serverdlg_title">Reversi servidor</string>
+    <string name="game_finished">O jogo terminou</string>
+    <string name="white">branco</string>
+    <string name="Black">preto</string>
+    <string name="VS_local">jogo local</string>
+    <string name="Vs_CPU">versus cpu</string>
+    <string name="VS_Online">"jogo de conexão "</string>
+    <string name="winner">" o vencedor é: "</string>
+</resources>

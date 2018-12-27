@@ -23,7 +23,7 @@
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="VERSUS CPU"
+            android:text="@string/Vs_CPU"
             android:textSize="30dp"
             android:layout_weight="1"
             />
@@ -32,7 +32,7 @@
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="LOCAL PLAY"
+            android:text="@string/VS_local"
             android:textSize="30dp"
             android:layout_weight="1"
             />
@@ -41,7 +41,7 @@
             android:id="@+id/btn3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="CONNECTION PLAY"
+            android:text="@string/VS_Online"
             android:textSize="30dp"
             android:layout_weight="1"
             />

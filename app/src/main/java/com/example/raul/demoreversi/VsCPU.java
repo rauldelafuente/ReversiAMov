@@ -50,7 +50,7 @@ public class VsCPU extends Activity{
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
 
-                //CPUmove();
+                CPUmove();
             }
         });
 
@@ -60,7 +60,7 @@ public class VsCPU extends Activity{
 
     public void CPUmove(){
         try {
-            Thread.sleep(1500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class VsCPU extends Activity{
         board.skipTurn(v);
     }
 
-    public void skipTurn2(View v){
+    public void rePlay(View v){
         board.skipTurn2(v);
     }
 

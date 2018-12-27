@@ -3,6 +3,12 @@
     <string name="error_netconn">No network connection</string>
     <string name="server_wait_opponent_msg">Waiting for your opponent</string>
     <string name="serverdlg_title">Server Reversi</string>
-    <string name="game_finished">The game was finished</string>
-    <string name="pic_desc">This is your profile picture</string>
+    <string name="game_finished">The game has finished</string>
+    <string name="white">White</string>
+    <string name="Black">Black</string>
+    <string name="VS_local">Local play</string>
+    <string name="Vs_CPU">Versus CPU</string>
+    <string name="VS_Online">Connection Play</string>
+    <string name="winner">"The winner is: "</string>
+
 </resources>
