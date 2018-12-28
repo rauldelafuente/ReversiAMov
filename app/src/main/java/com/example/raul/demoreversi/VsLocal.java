@@ -92,8 +92,8 @@ public class VsLocal extends Activity {
             winner = "Black";
         }
         AlertDialog d = new AlertDialog.Builder(this)
-                .setTitle(R.string.game_finished)
-                .setMessage(R.string.winner + winner)
+                .setTitle(getResources().getString(R.string.game_finished))
+                .setMessage(getResources().getString(R.string.winner) + winner)
                 .create();
         d.show();
     }

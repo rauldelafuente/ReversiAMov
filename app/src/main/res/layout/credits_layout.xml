@@ -6,11 +6,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Authors:
-Raúl de la Fuente and Alex della Schiava
-
-Year: 2018
-
-Version: 1.0"/>
+        android:text=" Authors:\n
+Raúl de la Fuente and Alex della Schiava\n
+Year: 2018\n
+Version: 1.0\n"/>
 
 </android.support.constraint.ConstraintLayout>

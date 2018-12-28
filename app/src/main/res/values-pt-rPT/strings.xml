@@ -11,4 +11,5 @@
     <string name="Vs_CPU">versus cpu</string>
     <string name="VS_Online">"jogo de conexão "</string>
     <string name="winner">" o vencedor é: "</string>
+    <string name="changePhoto">Mudar Foto</string>
 </resources>

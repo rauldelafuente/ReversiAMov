@@ -43,14 +43,14 @@ public class VsCPU extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //do the move to that postion
-                board.move (position);
+                board.move(position);
                 //Notify to the adapter that something changed
                 grid.notifyDataSetChanged();
                 //set the scoreboard of the activity
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
 
-                CPUmove();
+                //CPUmove();
             }
         });
 
@@ -66,6 +66,8 @@ public class VsCPU extends Activity{
         }
         board.CPUMov();
         grid.notifyDataSetChanged();
+        tvW.setText("" + board.whiteCount());
+        tvB.setText("" + board.blackCount());
     }
 
     public void skipTurn(View v){

@@ -64,6 +64,8 @@ public class GridViewAdapter extends BaseAdapter {
         return view;
     }
 
+
+
     //For notify a change and that everything has to be recalculated
     @Override
     public void notifyDataSetChanged() {

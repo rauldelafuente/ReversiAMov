@@ -513,7 +513,9 @@ public class Board {
             //add one to the counter to coun the movements (The buttons can be only clicked after count == 10)
             counter++;
 
+            //to detect when the game has finished we check if the mov list is empty
             if(mov.isEmpty()){
+                //If it empty for only one player, we change player
                 changePlayer();
                 if(turn1){
                     turn1=false;
@@ -523,9 +525,11 @@ public class Board {
                     turn2=false;
                     turn1=true;
                 }
+                //We recalculate the moviment list and chek again if is empty
                 formatMovList();
                 setMov(player);
                 if(mov.isEmpty()){
+                    //If it is empty, means that bot colors can't move, so the game has finished
                     finish=true;
                 }
             }
