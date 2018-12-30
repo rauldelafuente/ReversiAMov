@@ -2,7 +2,6 @@ package com.example.raul.demoreversi;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,9 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class VsLocal extends Activity {
 
@@ -77,10 +73,6 @@ public class VsLocal extends Activity {
         (...)
         android:adjustViewBounds="true" />
          */
-    }
-
-    public void goBack(){
-        finishActivity(0);
     }
 
     public void finished(){

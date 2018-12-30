@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
     <application
@@ -33,6 +35,14 @@
         </activity>
         <activity android:name=".CreditsActivity">
         </activity>
+
+        <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="com.example.raul.demoreversi.fileprovider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+        </provider>
+
     </application>
 
 

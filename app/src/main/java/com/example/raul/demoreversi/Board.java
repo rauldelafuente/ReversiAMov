@@ -11,8 +11,8 @@ public class Board {
 
     private String[] board;
 
-    private List<Integer> mov = new ArrayList<>();
-    private List<Integer> col = new ArrayList<>();
+    private ArrayList<Integer> mov = new ArrayList<>();
+    private ArrayList<Integer> col = new ArrayList<>();
 
     public boolean rePlay = false;
     public boolean turn1 = true;
@@ -139,7 +139,7 @@ public class Board {
     So we enter the current position, the player who has move and the list in which we want to store the cells that change color
      */
 
-    public List<Integer> getColList(int pos, String player, List<Integer> list) {
+    public ArrayList<Integer> getColList(int pos, String player, ArrayList<Integer> list) {
 
         setColorsUp(pos, player, list);
         setColorsDown(pos, player, list);
@@ -155,7 +155,7 @@ public class Board {
 
 
     //Get the list of movements
-    public List<Integer> getMovList() {
+    public ArrayList<Integer> getMovList() {
         return mov;
     }
 
@@ -340,7 +340,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsUp(int pos, String player, List<Integer> list) {
+    public boolean setColorsUp(int pos, String player, ArrayList<Integer> list) {
         if (pos - 8 < 0) {
             return false;
         }
@@ -357,7 +357,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsLeft(int pos, String player, List<Integer> list) {
+    public boolean setColorsLeft(int pos, String player, ArrayList<Integer> list) {
         if ((pos - 1 < 0)|| (pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)) {
             return false;
         }
@@ -374,7 +374,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsRigth(int pos, String player, List<Integer> list) {
+    public boolean setColorsRigth(int pos, String player, ArrayList<Integer> list) {
         if ((pos + 1 >= 64)|| (pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)) {
             return false;
         }
@@ -391,7 +391,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsRigthUp(int pos, String player, List<Integer> list) {
+    public boolean setColorsRigthUp(int pos, String player, ArrayList<Integer> list) {
         if ((pos - 7 < 0)|| (pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)) {
             return false;
         }
@@ -408,7 +408,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsRigthDown(int pos, String player, List<Integer> list) {
+    public boolean setColorsRigthDown(int pos, String player, ArrayList<Integer> list) {
         if ((pos + 9 >= 64)|| (pos==7) || (pos==15) || (pos==23) || (pos==31) || (pos==39) || (pos==47) || (pos==55) || (pos==63)) {
             return false;
         }
@@ -425,7 +425,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsLeftUp(int pos, String player, List<Integer> list) {
+    public boolean setColorsLeftUp(int pos, String player, ArrayList<Integer> list) {
         if ((pos - 9 < 0) || (pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)) {
             return false;
         }
@@ -442,7 +442,7 @@ public class Board {
         return false;
     }
 
-    public boolean setColorsLeftDown(int pos, String player, List<Integer> list) {
+    public boolean setColorsLeftDown(int pos, String player, ArrayList<Integer> list) {
         if ((pos + 7 >= 64) || (pos==0) || (pos==8) || (pos==16) || (pos==24) || (pos==32) || (pos==40) || (pos==48) || (pos==56)) {
             return false;
         }
