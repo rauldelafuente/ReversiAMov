@@ -5,4 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Basic rules \n
+Each reversi piece has a black side and a white side. On your turn, you place one piece on the board with your color facing up. You must place the piece so that an opponent's piece, or a row of opponent's pieces, is flanked by your pieces. All of the opponent's pieces between your pieces are then turned over to become your color.\n
+Aim of the game\n
+The object of the game is to own more pieces than your opponent when the game is over. The game is over when neither player has a move. Usually, this means the board is full.\n
+Start of the game\n
+The game is started in the position shown below on a reversi board consisting of 64 squares in an 8x8 grid.\n
+Playing the game\n
+A move consists of placing one piece on an empty square.\n
+Capture\n
+You can capture vertical, horizontal, and diagonal rows of pieces. Also, you can capture more than one row at once.\n
+End of the game \n
+The game ends when:\n
+One player wins, by making his color dominant on the board.\n
+The players agree to finish the game (as a resignation, or a draw).\n
+Player cards:\n
+Each player has two cards which can be used only after the 5th play of each player:\n
+o the Play again card;\n
+o the Pass turn card;\n
+• Each card can only be used once;\n
+• The use of the card is made by selecting it before making a normal play;\n
+• With the “Play again” card the user can play two times consecutively;\n
+• With the “Pass turn” card the turn is passed immediately to the other player."/>
+
 </android.support.constraint.ConstraintLayout>
