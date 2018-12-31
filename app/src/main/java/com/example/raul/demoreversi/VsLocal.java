@@ -31,7 +31,7 @@ public class VsLocal extends Activity {
         //Get all hte views from the layout
         tvW = findViewById(R.id.whiteResult);
         tvB = findViewById(R.id.blackResult);
-        tvt.findViewById(R.id.turn);
+        tvt = findViewById(R.id.turn);
 
         btnskp = findViewById(R.id.btnskp);
         btnnp = findViewById(R.id.btnnp);
@@ -47,6 +47,8 @@ public class VsLocal extends Activity {
 
         //set adapter
         gv.setAdapter(grid);
+
+        tvt.setText(getResources().getString(R.string.black));
 
         //When you click the grid view
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

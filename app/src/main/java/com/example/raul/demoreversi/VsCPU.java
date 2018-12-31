@@ -50,7 +50,7 @@ public class VsCPU extends Activity{
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
 
-                //CPUmove();
+                CPUmove();
             }
         });
 

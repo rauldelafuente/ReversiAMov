@@ -62,7 +62,7 @@ public class ProfileActivity extends Activity {
 
     public void saveName(View v) {
         try {
-            FileOutputStream fos = openFileOutput("name.txt", MODE_APPEND);
+            FileOutputStream fos = openFileOutput("name.txt", MODE_PRIVATE);
             PrintStream ps = new PrintStream(fos);
             String str = name.getText().toString();
             ps.println(str);
