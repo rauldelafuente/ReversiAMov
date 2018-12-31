@@ -31,6 +31,7 @@ public class VsLocal extends Activity {
         //Get all hte views from the layout
         tvW = findViewById(R.id.whiteResult);
         tvB = findViewById(R.id.blackResult);
+        tvt.findViewById(R.id.turn);
 
         btnskp = findViewById(R.id.btnskp);
         btnnp = findViewById(R.id.btnnp);
@@ -58,6 +59,7 @@ public class VsLocal extends Activity {
                 //set the scoreboard of the activity
                 tvW.setText("" + board.whiteCount());
                 tvB.setText("" + board.blackCount());
+
 
                 if(board.isFinish()){
                     finished();
