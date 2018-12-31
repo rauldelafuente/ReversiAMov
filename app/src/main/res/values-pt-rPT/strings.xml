@@ -6,10 +6,14 @@
     <string name="serverdlg_title">Reversi servidor</string>
     <string name="game_finished">O jogo terminou</string>
     <string name="white">branco</string>
-    <string name="Black">preto</string>
+    <string name="black">preto</string>
     <string name="VS_local">jogo local</string>
     <string name="Vs_CPU">versus cpu</string>
     <string name="VS_Online">"jogo de conexão "</string>
     <string name="winner">" o vencedor é: "</string>
     <string name="changePhoto">Mudar Foto</string>
+    <string name="profileName">"Nome: "</string>
+    <string name="currentName">Nome atual:</string>
+    <string name="writeName">Edite o seu nome</string>
+    <string name="turn">"Turno: "</string>
 </resources>

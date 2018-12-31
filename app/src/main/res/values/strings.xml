@@ -5,11 +5,15 @@
     <string name="serverdlg_title">Server Reversi</string>
     <string name="game_finished">The game has finished</string>
     <string name="white">White</string>
-    <string name="Black">Black</string>
+    <string name="black">Black</string>
     <string name="VS_local">Local play</string>
     <string name="Vs_CPU">Versus CPU</string>
     <string name="VS_Online">Connection Play</string>
     <string name="winner">"The winner is: "</string>
     <string name="changePhoto">Change Photo</string>
+    <string name="profileName">"Name: "</string>
+    <string name="currentName">Current name:</string>
+    <string name="writeName">Edit yout name</string>
+    <string name="turn">"Turn: "</string>
 
 </resources>

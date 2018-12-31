@@ -36,13 +36,6 @@
         <activity android:name=".CreditsActivity">
         </activity>
 
-        <provider
-        android:name="android.support.v4.content.FileProvider"
-        android:authorities="com.example.raul.demoreversi.fileprovider"
-        android:exported="false"
-        android:grantUriPermissions="true">
-        </provider>
-
     </application>
 
 

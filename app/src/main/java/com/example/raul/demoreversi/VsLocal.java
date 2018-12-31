@@ -18,6 +18,7 @@ public class VsLocal extends Activity {
     GridView gv;
     TextView tvW;
     TextView tvB;
+    TextView tvt;
     Board board = new Board();
     Button btnskp, btnnp, btnskp2, btnnp2;
     String player = "b";
@@ -60,6 +61,13 @@ public class VsLocal extends Activity {
 
                 if(board.isFinish()){
                     finished();
+                }
+
+                if(board.getTurnOne()){
+                    tvt.setText(getResources().getString(R.string.black));
+                }
+                else{
+                    tvt.setText(getResources().getString(R.string.white));
                 }
             }
         });
